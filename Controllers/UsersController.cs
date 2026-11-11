@@ -23,5 +23,26 @@ namespace ProductsValidation.Controllers
         {
             return View("Index", users);
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            User user = users.Find((item) => item.Id == id);
+            return View(user);
+        }
+
+        [HttpGet]
+        public IActionResult Create([FromQuery] User user)
+        {
+            return View(user);
+        }
+
+        [HttpPost]
+        [ActionName("Create")]
+        public IActionResult CreatePost([FromQuery] User user)
+        {
+            users.Add(user);
+            return View("Details", user);
+        }
     }
 }
