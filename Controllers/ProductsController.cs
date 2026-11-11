@@ -49,14 +49,52 @@ namespace ProductsValidation.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(product);
+            }
+            
             myProducts[myProducts.FindIndex(prod => prod.Id == product.Id)] = product;
-            return View(product);
+            return View("View", product);
         }
+
+        [HttpGet]
+        public IActionResult EditPrices(Product.Category type)
+        {
+            List<Product> products = myProducts.Where(prod => prod.Type == type).ToList();
+            return View(products);
+        } 
+
+        [HttpPost]
+        public IActionResult EditPrices(List<Product> products)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(products);
+            }
+
+            Dictionary<int, decimal> productPrices = products.ToDictionary((item) => item.Id, (item) => item.Price);
+
+            foreach(Product item in myProducts)
+            {
+                if(productPrices.ContainsKey(item.Id))
+                {
+                    item.Price = productPrices[item.Id];
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        } 
 
         
         [HttpPost]
         public IActionResult Create(Product product)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(product);
+            }
+            
             myProducts.Add(product);
             return View("View", product);
         }
