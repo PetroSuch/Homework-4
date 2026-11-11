@@ -7,7 +7,12 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a> |
+    
+    @foreach(var category in Enum.GetValues<ProductsValidation.Models.Product.Category>())
+    {
+        <a asp-action="EditPrices" asp-route-type="@category">@category Prices</a>
+    }
 </p>
 <table class="table">
     <thead>
@@ -50,7 +55,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Details", "View", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
