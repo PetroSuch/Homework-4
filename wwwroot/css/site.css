@@ -69,3 +69,85 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+.data-table {
+  border-collapse: collapse;
+  color: #111;
+  font-size: 20px;
+  line-height: 1.3;
+  background: #fff;
+  border: 0;
+  box-shadow: none;
+}
+
+.reference-heading {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 1.25rem 0 1.8rem;
+}
+
+.data-table thead th {
+  background: #f7f8fa;
+  color: #111;
+  border-top: 0;
+  border-bottom: 1px solid #c8ccd0;
+  font-weight: 700;
+}
+
+.data-table th,
+.data-table td {
+  padding: 13px 10px;
+  vertical-align: middle;
+}
+
+.data-table tbody td {
+  border-top: 0;
+  border-bottom: 1px solid #dce1e6;
+}
+
+.editor-form {
+  background: #fafbfc;
+  border: 1px solid #dce1e6;
+  border-radius: 6px;
+  max-width: 600px;
+}
+
+.editor-form label {
+  font-size: 1rem;
+  margin-bottom: .5rem;
+}
+
+.editor-form .form-control {
+  min-height: 48px;
+  font-size: 1rem;
+  background-color: #fff;
+  border-color: #ced4da;
+  border-radius: .3rem;
+}
+
+.editor-form .form-control:focus {
+  border-color: #80b5ed;
+  box-shadow: 0 0 0 .2rem rgba(27, 110, 194, .12);
+}
+
+.editor-form .form-control[readonly] {
+  background-color: #f7f8f9;
+  color: #59636d;
+}
+
+.editor-form .btn {
+  padding: .55rem 1.4rem;
+}
+
+.editor-form .field-validation-error {
+  display: block;
+  margin-top: .4rem;
+  font-size: .875rem;
+}
+
+@media (max-width: 767px) {
+  .data-table { font-size: 15px; }
+  .data-table th, .data-table td { padding: 12px 6px; overflow-wrap: anywhere; }
+  .reference-heading { font-size: 30px; }
+}
+
